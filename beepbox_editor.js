@@ -517,8 +517,8 @@ var beepbox = (function (exports) {
         }
     }
     EditorConfig.version = "1.0";
-    EditorConfig.versionDisplayName = " BoxBeep";
-    EditorConfig.releaseNotesURL = "https://github.com/johnnesky/beepbox/releases/tag/v" + EditorConfig.version;
+    EditorConfig.versionDisplayName = EditorConfig.version + " BoxBeep";
+    EditorConfig.releaseNotesURL = "";
     EditorConfig.isOnMac = /^Mac/i.test(navigator.platform) || /Mac OS X/i.test(navigator.userAgent) || /^(iPhone|iPad|iPod)/i.test(navigator.platform) || /(iPhone|iPad|iPod)/i.test(navigator.userAgent);
     EditorConfig.ctrlSymbol = EditorConfig.isOnMac ? "⌘" : "Ctrl+";
     EditorConfig.ctrlName = EditorConfig.isOnMac ? "command" : "control";
@@ -1001,6 +1001,8 @@ var beepbox = (function (exports) {
 			--fifth-note: #44220f;
 			--white-piano-key: #111111;
 			--black-piano-key: #999999;
+			--white-piano-key-text: #fff;
+			--black-piano-key-text: #000;
 
 			--pitch1-secondary-channel: #932612;
 			--pitch1-primary-channel:   #ff5f42;
@@ -1103,6 +1105,8 @@ var beepbox = (function (exports) {
 			--fifth-note: #bb9977;
 			--white-piano-key: #444444;
 			--black-piano-key: #bbbbbb;
+			--white-piano-key-text: #fff;
+			--black-piano-key-text: #000;
 
 			--pitch1-secondary-channel: #ff665e;
 			--pitch1-primary-channel:   #da0c00;
@@ -1199,6 +1203,8 @@ var beepbox = (function (exports) {
     ColorConfig.fifthNote = "var(--fifth-note)";
     ColorConfig.whitePianoKey = "var(--white-piano-key)";
     ColorConfig.blackPianoKey = "var(--black-piano-key)";
+    ColorConfig.whitePianoKeyText = "var(--white-piano-key-text)";
+    ColorConfig.blackPianoKeyText = "var(--black-piano-key-text)";
     ColorConfig.pitchChannels = toNameMap([
         {
             name: "pitch1",
@@ -17186,7 +17192,7 @@ var beepbox = (function (exports) {
                             this._pianoKeys[j].classList.remove("disabled");
                             this._pianoLabels[j].style.display = "";
                             const label = this._pianoLabels[j];
-                            label.style.color = Config.keys[pitchNameIndex].isWhiteKey ? "black" : "white";
+                            label.style.color = Config.keys[pitchNameIndex].isWhiteKey ? "var(--white-piano-key-text)" : "var(--black-piano-key-text)";
                             label.textContent = Piano.getPitchName(pitchNameIndex, j);
                         }
                     }
