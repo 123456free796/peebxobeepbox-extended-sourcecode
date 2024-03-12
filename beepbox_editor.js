@@ -1084,6 +1084,10 @@ var beepbox = (function (exports) {
 			box-shadow: inset 0 0 0 1px var(--secondary-text);
 		}
 		
+		a.tip {
+			display:none;
+		}
+
 		`,
         "light classic": `
 		:root {
@@ -1182,6 +1186,10 @@ var beepbox = (function (exports) {
 			--noise5-primary-channel:   #5d4488;
 			--noise5-secondary-note:    #6e5599;
 			--noise5-primary-note:      #3a1d4d;
+		}
+
+		a.tip {
+			display:none;
 		}
 		`,
     };

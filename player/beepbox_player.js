@@ -740,7 +740,7 @@ var beepbox = (function (exports) {
 			--fifth-note: #44220f;
 			--white-piano-key: #111111;
 			--black-piano-key: #999999;
-			--white-piano-key-text: #ecedff;
+			--white-piano-key-text: #fff;
 			--black-piano-key-text: #000;
 
 			--pitch1-secondary-channel: #932612;
@@ -823,6 +823,10 @@ var beepbox = (function (exports) {
 			box-shadow: inset 0 0 0 1px var(--secondary-text);
 		}
 		
+		a.tip {
+			display:none;
+		}
+
 		`,
         "light classic": `
 		:root {
@@ -844,7 +848,7 @@ var beepbox = (function (exports) {
 			--fifth-note: #bb9977;
 			--white-piano-key: #444444;
 			--black-piano-key: #bbbbbb;
-			--white-piano-key-text: #ecedff;
+			--white-piano-key-text: #fff;
 			--black-piano-key-text: #000;
 
 			--pitch1-secondary-channel: #ff665e;
@@ -921,6 +925,10 @@ var beepbox = (function (exports) {
 			--noise5-primary-channel:   #5d4488;
 			--noise5-secondary-note:    #6e5599;
 			--noise5-primary-note:      #3a1d4d;
+		}
+
+		a.tip {
+			display:none;
 		}
 		`,
     };
