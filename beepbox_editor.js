@@ -15676,9 +15676,9 @@ var beepbox = (function (exports) {
                 }
             };
             this._confirm = () => {
-                this._doc.prefs.layout = this._form.elements["layout"].value;
+                this._doc.prefs.boxbeepLayout = this._form.elements["layout"].value;
                 this._doc.prefs.save();
-                Layout.setLayout(this._doc.prefs.layout);
+                Layout.setLayout(this._doc.prefs.boxbeepLayout);
                 this._close();
             };
             this._fileInput.select();
@@ -15686,7 +15686,7 @@ var beepbox = (function (exports) {
             this._okayButton.addEventListener("click", this._confirm);
             this._cancelButton.addEventListener("click", this._close);
             this.container.addEventListener("keydown", this._whenKeyPressed);
-            this._form.elements["layout"].value = this._doc.prefs.layout;
+            this._form.elements["layout"].value = this._doc.prefs.boxbeepLayout;
         }
     }
 
@@ -19516,7 +19516,7 @@ You should be redirected to the song at:<br /><br />
             this._volumeSlider = input({ title: "main volume", style: "width: 5em; flex-grow: 1; margin: 0;", type: "range", min: "0", max: "75", value: "50", step: "1" });
             this._fileMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "File"), option({ value: "new" }, "+ New Blank Song"), option({ value: "import" }, "↑ Import Song... (" + EditorConfig.ctrlSymbol + "O)"), option({ value: "export" }, "↓ Export Song... (" + EditorConfig.ctrlSymbol + "S)"), option({ value: "copyUrl" }, "⎘ Copy Song URL"), option({ value: "shareUrl" }, "⤳ Share Song URL"), option({ value: "shortenUrl" }, "… Shorten Song URL"), option({ value: "viewPlayer" }, "▶ View in Song Player"), option({ value: "copyEmbed" }, "⎘ Copy HTML Embed Code"), option({ value: "songRecovery" }, "⚠ Recover Recent Song..."));
             this._editMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "Edit"), option({ value: "undo" }, "Undo (Z)"), option({ value: "redo" }, "Redo (Y)"), option({ value: "copy" }, "Copy Pattern (C)"), option({ value: "pasteNotes" }, "Paste Pattern Notes (V)"), option({ value: "pasteNumbers" }, "Paste Pattern Numbers (" + EditorConfig.ctrlSymbol + "⇧V)"), option({ value: "insertBars" }, "Insert Bar (⏎)"), option({ value: "deleteBars" }, "Delete Selected Bars (⌫)"), option({ value: "insertChannel" }, "Insert Channel (" + EditorConfig.ctrlSymbol + "⏎)"), option({ value: "deleteChannel" }, "Delete Selected Channels (" + EditorConfig.ctrlSymbol + "⌫)"), option({ value: "selectAll" }, "Select All (A)"), option({ value: "selectChannel" }, "Select Channel (⇧A)"), option({ value: "duplicatePatterns" }, "Duplicate Reused Patterns (D)"), option({ value: "transposeUp" }, "Move Notes Up (+ or ⇧+)"), option({ value: "transposeDown" }, "Move Notes Down (- or ⇧-)"), option({ value: "moveNotesSideways" }, "Move All Notes Sideways..."), option({ value: "beatsPerBar" }, "Change Beats Per Bar..."), option({ value: "barCount" }, "Change Song Length..."), option({ value: "channelSettings" }, "Channel Settings... (Q)"));
-            this._optionsMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "Preferences"), option({ value: "autoPlay" }, "Auto Play on Load"), option({ value: "autoFollow" }, "Show And Play The Same Bar"), option({ value: "enableNotePreview" }, "Hear Preview of Added Notes"), option({ value: "showLetters" }, "Show Piano Keys"), option({ value: "showFifth" }, 'Highlight "Fifth" of Song Key'), option({ value: "notesOutsideScale" }, "Allow Adding Notes Not in Scale"), option({ value: "setDefaultScale" }, "Use Current Scale as Default"), option({ value: "showChannels" }, "Show Notes From All Channels"), option({ value: "showScrollBar" }, "Show Octave Scroll Bar"), option({ value: "alwaysShowSettings" }, "Customize All Instruments"), option({ value: "instrumentCopyPaste" }, "Instrument Copy/Paste Buttons"), option({ value: "enableChannelMuting" }, "Enable Channel Muting"), option({ value: "displayBrowserUrl" }, "Display Song Data in URL"), option({ value: "layout" }, "Choose Layout..."), option({ value: "boxbeepColorTheme" }, "Light Theme"), option({ value: "recordingSetup" }, "Set Up Note Recording..."));
+            this._optionsMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "Preferences"), option({ value: "autoPlay" }, "Auto Play on Load"), option({ value: "autoFollow" }, "Show And Play The Same Bar"), option({ value: "enableNotePreview" }, "Hear Preview of Added Notes"), option({ value: "showLetters" }, "Show Piano Keys"), option({ value: "showFifth" }, 'Highlight "Fifth" of Song Key'), option({ value: "notesOutsideScale" }, "Allow Adding Notes Not in Scale"), option({ value: "setDefaultScale" }, "Use Current Scale as Default"), option({ value: "showChannels" }, "Show Notes From All Channels"), option({ value: "showScrollBar" }, "Show Octave Scroll Bar"), option({ value: "alwaysShowSettings" }, "Customize All Instruments"), option({ value: "instrumentCopyPaste" }, "Instrument Copy/Paste Buttons"), option({ value: "enableChannelMuting" }, "Enable Channel Muting"), option({ value: "displayBrowserUrl" }, "Display Song Data in URL"), option({ value: "boxbeepLayout" }, "Choose Layout..."), option({ value: "boxbeepColorTheme" }, "Light Theme"), option({ value: "recordingSetup" }, "Set Up Note Recording..."));
             this._scaleSelect = buildOptions(select(), Config.scales.map(scale => scale.name));
             this._keySelect = buildOptions(select(), Config.keys.map(key => key.name).reverse());
             this._tempoSlider = new Slider(input({ style: "margin: 0; width: 4em; flex-grow: 1; vertical-align: middle;", type: "range", min: "0", max: "14", value: "7", step: "1" }), this._doc, (oldValue, newValue) => new ChangeTempo(this._doc, oldValue, Math.round(120.0 * Math.pow(2.0, (-4.0 + newValue) / 9.0))));
@@ -20879,8 +20879,8 @@ You should be redirected to the song at:<br /><br />
                     case "displayBrowserUrl":
                         this._doc.toggleDisplayBrowserUrl();
                         break;
-                    case "layout":
-                        this._openPrompt("layout");
+                    case "boxbeepLayout":
+                        this._openPrompt("boxbeepLayout");
                         break;
                     case "boxbeepColorTheme":
                         this._doc.prefs.boxbeepColorTheme = this._doc.prefs.boxbeepColorTheme == "light classic" ? "dark classic" : "light classic";
@@ -21002,7 +21002,7 @@ You should be redirected to the song at:<br /><br />
                 autoPlayOption.setAttribute("hidden", "");
             }
             if (window.screen.availWidth < 710 || window.screen.availHeight < 710) {
-                const layoutOption = this._optionsMenu.querySelector("[value=layout]");
+                const layoutOption = this._optionsMenu.querySelector("[value=boxbeepLayout]");
                 layoutOption.disabled = true;
                 layoutOption.setAttribute("hidden", "");
             }
@@ -21049,7 +21049,7 @@ You should be redirected to the song at:<br /><br />
                     case "channelSettings":
                         this.prompt = new ChannelSettingsPrompt(this._doc);
                         break;
-                    case "layout":
+                    case "boxbeepLayout":
                         this.prompt = new LayoutPrompt(this._doc);
                         break;
                     case "recordingSetup":
@@ -22067,7 +22067,7 @@ You should be redirected to the song at:<br /><br />
             this.metronomeCountIn = window.localStorage.getItem("metronomeCountIn") != "false";
             this.metronomeWhileRecording = window.localStorage.getItem("metronomeWhileRecording") != "false";
             this.keyboardLayout = window.localStorage.getItem("keyboardLayout") || "wickiHayden";
-            this.layout = window.localStorage.getItem("layout") || "small";
+            this.boxbeepLayout = window.localStorage.getItem("boxbeepLayout") || "small";
             this.boxbeepColorTheme = window.localStorage.getItem("boxbeepColorTheme") || "dark classic";
             this.visibleOctaves = (window.localStorage.getItem("visibleOctaves") >>> 0) || Preferences.defaultVisibleOctaves;
             const defaultScale = Config.scales.dictionary[window.localStorage.getItem("defaultScale")];
@@ -22077,7 +22077,7 @@ You should be redirected to the song at:<br /><br />
             }
             if (window.localStorage.getItem("fullScreen") != null) {
                 if (window.localStorage.getItem("fullScreen") == "true")
-                    this.layout = "long";
+                    this.boxbeepLayout = "long";
                 window.localStorage.removeItem("fullScreen");
             }
         }
@@ -22103,7 +22103,7 @@ You should be redirected to the song at:<br /><br />
             window.localStorage.setItem("metronomeCountIn", this.metronomeCountIn ? "true" : "false");
             window.localStorage.setItem("metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
             window.localStorage.setItem("keyboardLayout", this.keyboardLayout);
-            window.localStorage.setItem("layout", this.layout);
+            window.localStorage.setItem("boxbeepLayout", this.boxbeepLayout);
             window.localStorage.setItem("boxbeepColorTheme", this.boxbeepColorTheme);
             window.localStorage.setItem("volume", String(this.volume));
             window.localStorage.setItem("visibleOctaves", String(this.visibleOctaves));
@@ -22295,7 +22295,7 @@ You should be redirected to the song at:<br /><br />
             };
             this.notifier.watch(this._validateDocState);
             ColorConfig.setTheme(this.prefs.boxbeepColorTheme);
-            Layout.setLayout(this.prefs.layout);
+            Layout.setLayout(this.prefs.boxbeepLayout);
             if (window.sessionStorage.getItem("currentUndoIndex") == null) {
                 window.sessionStorage.setItem("currentUndoIndex", "0");
                 window.sessionStorage.setItem("oldestUndoIndex", "0");
@@ -22500,7 +22500,7 @@ You should be redirected to the song at:<br /><br />
             return (!this.getMobileLayout() && this.prefs.enableChannelMuting && !this.getFullScreen()) ? 30 : 32;
         }
         getFullScreen() {
-            return !this.getMobileLayout() && (this.prefs.layout != "small");
+            return !this.getMobileLayout() && (this.prefs.boxbeepLayout != "small");
         }
         getVisibleOctaveCount() {
             return this.getFullScreen() ? this.prefs.visibleOctaves : Preferences.defaultVisibleOctaves;
