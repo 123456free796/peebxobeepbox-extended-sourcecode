@@ -517,7 +517,7 @@ var beepbox = (function (exports) {
         }
     }
     EditorConfig.version = "1.0";
-    EditorConfig.versionDisplayName = EditorConfig.version + "BoxBeep";
+    EditorConfig.versionDisplayName = " BoxBeep";
     EditorConfig.releaseNotesURL = "https://github.com/johnnesky/beepbox/releases/tag/v" + EditorConfig.version;
     EditorConfig.isOnMac = /^Mac/i.test(navigator.platform) || /Mac OS X/i.test(navigator.userAgent) || /^(iPhone|iPad|iPod)/i.test(navigator.platform) || /(iPhone|iPad|iPod)/i.test(navigator.userAgent);
     EditorConfig.ctrlSymbol = EditorConfig.isOnMac ? "⌘" : "Ctrl+";
@@ -15611,24 +15611,24 @@ var beepbox = (function (exports) {
             this._form = form({ style: "display: flex; gap: 10px;" }, label$2({ class: "layout-option" }, input$8({ type: "radio", name: "layout", value: "small" }), SVG(`\
 					<svg viewBox="-4 -1 28 22">
 						<rect x="0" y="0" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1"/>
-						<rect x="2" y="2" width="11" height="10" fill="currentColor"/>
-						<rect x="14" y="2" width="4" height="16" fill="currentColor"/>
-						<rect x="2" y="13" width="11" height="5" fill="currentColor"/>
+						<rect x="7" y="2" width="11" height="10" fill="currentColor"/>
+						<rect x="2" y="2" width="4" height="16" fill="currentColor"/>
+						<rect x="7" y="13" width="11" height="5" fill="currentColor"/>
 					</svg>
 				`), div$a("Small")), label$2({ class: "layout-option" }, input$8({ type: "radio", name: "layout", value: "long" }), SVG(`\
 					<svg viewBox="-1 -1 28 22">
 						<rect x="0" y="0" width="26" height="20" fill="none" stroke="currentColor" stroke-width="1"/>
-						<rect x="2" y="2" width="12" height="10" fill="currentColor"/>
-						<rect x="15" y="2" width="4" height="10" fill="currentColor"/>
-						<rect x="20" y="2" width="4" height="10" fill="currentColor"/>
+						<rect x="12" y="2" width="12" height="10" fill="currentColor"/>
+						<rect x="2" y="2" width="4" height="10" fill="currentColor"/>
+						<rect x="7" y="2" width="4" height="10" fill="currentColor"/>
 						<rect x="2" y="13" width="22" height="5" fill="currentColor"/>
 					</svg>
-				`), div$a("Long")), label$2({ class: "layout-option" }, input$8({ type: "radio", name: "layout", value: "tall" }), SVG(`\
+				`), div$a("Long (AB)")), label$2({ class: "layout-option" }, input$8({ type: "radio", name: "layout", value: "tall" }), SVG(`\
 					<svg viewBox="-1 -1 28 22">
 						<rect x="0" y="0" width="26" height="20" fill="none" stroke="currentColor" stroke-width="1"/>
-						<rect x="11" y="2" width="8" height="16" fill="currentColor"/>
-						<rect x="20" y="2" width="4" height="16" fill="currentColor"/>
-						<rect x="2" y="2" width="8" height="16" fill="currentColor"/>
+						<rect x="7" y="2" width="8" height="16" fill="currentColor"/>
+						<rect x="2" y="2" width="4" height="16" fill="currentColor"/>
+						<rect x="16" y="2" width="8" height="16" fill="currentColor"/>
 					</svg>
 				`), div$a("Tall")));
             this.container = div$a({ class: "prompt noSelection", style: "width: 300px;" }, h2$9("Layout"), this._form, div$a({ style: "display: flex; flex-direction: row-reverse; justify-content: space-between;" }, this._okayButton), this._cancelButton);
