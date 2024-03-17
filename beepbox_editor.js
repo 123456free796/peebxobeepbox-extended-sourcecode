@@ -1572,6 +1572,12 @@ var beepbox = (function (exports) {
 	mask-position: center;
 }
 
+.beepboxEditor .piano-label {
+	padding-right: 15px;
+	padding-left: 0px;
+	transform: scale(-1, 1);
+}
+
 .beepboxEditor .piano-button.pressed, .beepboxEditor .drum-button.pressed {
 	filter: brightness(0.5);
 }
@@ -1579,7 +1585,7 @@ var beepbox = (function (exports) {
 .beepboxEditor .customize-instrument {
 	margin: 2px 0;
 }
-.beepboxEditor .customize-instrument::before {
+.beepboxEditor .customize-instrument::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1606,7 +1612,7 @@ var beepbox = (function (exports) {
 	margin: 2px 0;
 	flex-grow: 1;
 }
-.beepboxEditor .copy-instrument::before {
+.beepboxEditor .copy-instrument::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1629,7 +1635,7 @@ var beepbox = (function (exports) {
 	margin: 2px 0;
 	flex-grow: 1;
 }
-.beepboxEditor .paste-instrument::before {
+.beepboxEditor .paste-instrument::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1772,7 +1778,7 @@ var beepbox = (function (exports) {
 	visibility: hidden;
 }
 
-.beepboxEditor .menu.file::before {
+.beepboxEditor .menu.file::after { /* Was the unique icon */
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1783,15 +1789,15 @@ var beepbox = (function (exports) {
 	width: var(--button-size);
 	height: var(--button-size);
 	background: currentColor;
-	-webkit-mask-image: var(--file-page-symbol);
+	-webkit-mask-image: var(--menu-down-symbol);
 	-webkit-mask-repeat: no-repeat;
 	-webkit-mask-position: center;
-	mask-image: var(--file-page-symbol);
+	mask-image: var(--menu-down-symbol);
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
 
-.beepboxEditor .menu.edit::before {
+.beepboxEditor .menu.edit::after { /* Was the unique icon */
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1802,15 +1808,15 @@ var beepbox = (function (exports) {
 	width: var(--button-size);
 	height: var(--button-size);
 	background: currentColor;
-	-webkit-mask-image: var(--edit-pencil-symbol);
+	-webkit-mask-image: var(--menu-down-symbol);
 	-webkit-mask-repeat: no-repeat;
 	-webkit-mask-position: center;
-	mask-image: var(--edit-pencil-symbol);
+	mask-image: var(--menu-down-symbol);
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
 
-.beepboxEditor .menu.preferences::before {
+.beepboxEditor .menu.preferences::after { /* Was the unique icon */
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1821,10 +1827,10 @@ var beepbox = (function (exports) {
 	width: var(--button-size);
 	height: var(--button-size);
 	background: currentColor;
-	-webkit-mask-image: var(--preferences-gear-symbol);
+	-webkit-mask-image: var(--menu-down-symbol);
 	-webkit-mask-repeat: no-repeat;
 	-webkit-mask-position: center;
-	mask-image: var(--preferences-gear-symbol);
+	mask-image: var(--menu-down-symbol);
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
@@ -1937,7 +1943,7 @@ var beepbox = (function (exports) {
 .beepboxEditor .selectContainer {
 	position: relative;
 }
-.beepboxEditor .selectContainer:not(.menu)::after {
+.beepboxEditor .selectContainer:not(.menu)::before {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1955,7 +1961,7 @@ var beepbox = (function (exports) {
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
-.beepboxEditor .selectContainer.menu::after {
+.beepboxEditor .selectContainer.menu.file::before { /* Was the down arrow */
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -1966,10 +1972,46 @@ var beepbox = (function (exports) {
 	width: var(--button-size);
 	height: var(--button-size);
 	background: currentColor;
-	-webkit-mask-image: var(--menu-down-symbol);
+	-webkit-mask-image: var(--file-page-symbol);
 	-webkit-mask-repeat: no-repeat;
 	-webkit-mask-position: center;
-	mask-image: var(--menu-down-symbol);
+	mask-image: var(--file-page-symbol);
+	mask-repeat: no-repeat;
+	mask-position: center;
+}
+.beepboxEditor .selectContainer.menu.edit::before { /* Was the down arrow */
+	content: "";
+	flex-shrink: 0;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	width: var(--button-size);
+	height: var(--button-size);
+	background: currentColor;
+	-webkit-mask-image: var(--edit-pencil-symbol);
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-image: var(--edit-pencil-symbol);
+	mask-repeat: no-repeat;
+	mask-position: center;
+}
+.beepboxEditor .selectContainer.menu.preferences::before { /* Was the down arrow */
+	content: "";
+	flex-shrink: 0;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	width: var(--button-size);
+	height: var(--button-size);
+	background: currentColor;
+	-webkit-mask-image: var(--preferences-gear-symbol);
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-image: var(--preferences-gear-symbol);
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
@@ -2044,7 +2086,7 @@ var beepbox = (function (exports) {
 	grid-column-gap: 4px;
 }
 
-.beepboxEditor button.playButton::before {
+.beepboxEditor button.playButton::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -2062,7 +2104,7 @@ var beepbox = (function (exports) {
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
-.beepboxEditor button.pauseButton::before {
+.beepboxEditor button.pauseButton::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -2080,7 +2122,7 @@ var beepbox = (function (exports) {
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
-.beepboxEditor button.recordButton::before {
+.beepboxEditor button.recordButton::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -2098,7 +2140,7 @@ var beepbox = (function (exports) {
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
-.beepboxEditor button.stopButton::before {
+.beepboxEditor button.stopButton::after {
 	content: "";
 	flex-shrink: 0;
 	position: absolute;
@@ -17058,7 +17100,7 @@ var beepbox = (function (exports) {
             this._pianoContainer = HTML.div({ style: "width: 100%; height: 100%; display: flex; flex-direction: column-reverse; align-items: stretch;" });
             this._drumContainer = HTML.div({ style: "width: 100%; height: 100%; display: flex; flex-direction: column-reverse; align-items: stretch;" });
             this._preview = HTML.div({ style: `width: 100%; height: 40px; border: 2px solid ${ColorConfig.primaryText}; position: absolute; box-sizing: border-box; pointer-events: none;` });
-            this.container = HTML.div({ style: "width: 32px; height: 100%; overflow: hidden; position: relative; flex-shrink: 0; touch-action: none;" }, this._pianoContainer, this._drumContainer, this._preview);
+            this.container = HTML.div({ class: "piano-container", style: "transform:scale(-1,1); width: 32px; height: 100%; overflow: hidden; position: relative; flex-shrink: 0; touch-action: none;" }, this._pianoContainer, this._drumContainer, this._preview);
             this._editorHeight = 481;
             this._pianoKeys = [];
             this._pianoLabels = [];
@@ -19622,7 +19664,7 @@ You should be redirected to the song at:<br /><br />
             this._zoomInButton = button({ class: "zoomInButton", type: "button", title: "Zoom In" });
             this._zoomOutButton = button({ class: "zoomOutButton", type: "button", title: "Zoom Out" });
             this._patternEditorRow = div({ style: "flex: 1; height: 100%; display: flex; overflow: hidden; justify-content: center;" }, this._patternEditorPrev.container, this._patternEditor.container, this._patternEditorNext.container);
-            this._patternArea = div({ class: "pattern-area" }, this._piano.container, this._patternEditorRow, this._octaveScrollBar.container, this._zoomInButton, this._zoomOutButton);
+            this._patternArea = div({ class: "pattern-area" }, this._octaveScrollBar.container, this._patternEditorRow, this._piano.container, this._zoomInButton, this._zoomOutButton);
             this._trackContainer = div({ class: "trackContainer" }, this._trackEditor.container, this._loopEditor.container);
             this._trackVisibleArea = div({ style: "position: absolute; width: 100%; height: 100%; pointer-events: none;" });
             this._trackAndMuteContainer = div({ class: "trackAndMuteContainer" }, this._muteEditor.container, this._trackContainer, this._trackVisibleArea);
